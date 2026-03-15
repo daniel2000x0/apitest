@@ -1,0 +1,217 @@
+@import "../../../theme/theme.css";
+@import "../../../utils/utilities.css";
+
+/* =========================
+   FORM
+========================= */
+
+.react-aria-Form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+/* botón submit */
+
+.react-aria-Form > .react-aria-Button {
+  align-self: flex-start;
+}
+
+/* =========================
+   ALERTAS DE FORM
+========================= */
+
+.react-aria-Form [role=alert] {
+  border: 1px solid var(--invalid-color);
+  background: var(--overlay-background);
+
+  border-radius: var(--radius);
+  padding: var(--spacing-4);
+
+  max-width: 320px;
+
+  outline: none;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.react-aria-Form [role=alert]:focus {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+.react-aria-Form [role=alert] h3 {
+  margin-top: 0;
+  font-size: var(--font-size-lg);
+}
+
+.react-aria-Form [role=alert] p {
+  margin-bottom: 0;
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.react-aria-Label {
+  display: block;
+
+  font: var(--font-size) system-ui;
+  color: var(--text-color);
+
+  margin-bottom: var(--spacing-2);
+
+  font-weight: 500;
+}
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.react-aria-FieldError {
+  display: block;
+
+  font: var(--font-size-sm) system-ui;
+  color: var(--invalid-color);
+
+  margin-top: var(--spacing-1);
+
+  contain: inline-size;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.field-description {
+  display: block;
+
+  font: var(--font-size-sm) system-ui;
+
+  margin-top: var(--spacing-1);
+
+  color: var(--text-color-secondary);
+
+  contain: inline-size;
+}
+
+/* ocultar descripción si es inválido */
+
+[data-invalid] > .field-description {
+  display: none;
+}
+
+/* =========================
+   BOTÓN BASE PARA CAMPOS
+   (DatePicker, Select, ComboBox, TimeField)
+========================= */
+
+.field-Button {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100% - 6px);
+  aspect-ratio: 1;
+
+  border-radius: var(--radius-sm);
+
+  cursor: pointer;
+
+  /* ADDED: evita selección accidental en algunos navegadores */
+  user-select: none;
+
+  /* ADDED: mejora interacción táctil */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* BOTÓN DEL CAMPO (ej: DatePicker) */
+/* 
+   Este bloque se dejó comentado porque ahora usamos
+   una versión simplificada arriba para evitar conflictos
+   con estilos específicos del DatePicker.
+
+   Se mantiene aquí solo como referencia.
+*/
+/*
+.field-Button {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100% - 6px);
+  aspect-ratio: 1;
+
+  margin-left: calc(-1 * var(--spacing-8) + 6px);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+
+  cursor: pointer;
+
+  transition: background 0.2s, scale 0.15s;
+
+  -webkit-tap-highlight-color: transparent;
+}
+*/
+
+/* =========================
+   ICONO DEL BOTÓN
+========================= */
+
+.field-Button svg {
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+}
+
+/* =========================
+   ESTADOS INTERACTIVOS
+========================= */
+
+/* hover */
+
+.field-Button:where([data-hovered], [data-pressed]) {
+  background: var(--primary);
+  color: white;
+}
+
+/* pressed */
+
+.field-Button[data-pressed] {
+  scale: 0.9;
+}
+
+/* focus */
+
+.field-Button[data-focus-visible] {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* disabled */
+
+.field-Button[data-disabled] {
+  background: none;
+  border-color: var(--border-color-disabled);
+  color: var(--text-color-disabled);
+}
+
+/* =========================
+   FORCED COLORS (ACCESIBILIDAD)
+========================= */
+
+@media (forced-colors: active) {
+
+  .field-Button {
+    background: Highlight;
+    color: HighlightText;
+    border: none;
+  }
+
+}

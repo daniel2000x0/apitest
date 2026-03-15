@@ -1,0 +1,137 @@
+@import "../../../theme/theme.css";
+@import "../../../utils/utilities.css";
+
+.react-aria-Calendar {
+  width: calc(var(--spacing-9) * 7);
+  max-width: 100%;
+  container-type: inline-size;
+  color: var(--text-color);
+  font: var(--font-size) system-ui;
+
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4);
+
+  header {
+    display: flex;
+    align-items: center;
+    margin: 0 var(--spacing-1) var(--spacing-4) var(--spacing-1);
+    gap: var(--spacing-2);
+
+    .react-aria-Heading {
+      flex: 1;
+      margin: 0;
+      text-align: center;
+      font-size: var(--font-size-lg);
+    }
+
+    button {
+      all: unset;
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 28px;
+      height: 28px;
+
+      border-radius: var(--radius);
+
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+
+      transition: all 0.2s;
+
+      &:hover {
+        background: var(--primary);
+        color: white;
+      }
+
+      &:where([data-focus-visible]) {
+        outline: 2px solid var(--focus-ring-color);
+      }
+    }
+  }
+
+  .react-aria-CalendarGrid {
+    border-spacing: 0;
+  }
+
+  [slot=errorMessage] {
+    font: var(--font-size-sm) system-ui;
+    color: var(--invalid-color);
+    margin-top: var(--spacing-2);
+  }
+}
+
+.react-aria-CalendarHeaderCell {
+  font-size: var(--font-size-sm);
+  text-align: center;
+  padding-bottom: var(--spacing-2);
+  color: var(--text-color);
+}
+
+.react-aria-CalendarCell {
+  --gap: var(--spacing-1);
+
+  width: calc((100cqw / 7) - var(--gap));
+  aspect-ratio: 1;
+
+  margin: calc(var(--gap) / 2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: var(--font-size);
+  text-align: center;
+
+  border-radius: var(--radius);
+  cursor: pointer;
+
+  background: transparent;
+  border: 1px solid transparent;
+
+  forced-color-adjust: none;
+  transition: all 200ms;
+
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: rgba(99,102,241,0.2);
+  }
+
+  &[data-selected] {
+    background: var(--primary);
+    color: white;
+  }
+
+  &[data-today] {
+    border: 1px solid var(--primary);
+  }
+
+  &[data-outside-month] {
+    opacity: 0.35;
+  }
+
+  &[data-pressed] {
+    scale: 0.9;
+  }
+
+  &[data-unavailable] {
+    text-decoration: line-through;
+    color: var(--invalid-color);
+  }
+
+  &[data-invalid] {
+    --button-color: var(--invalid-color);
+  }
+
+  @media (min-resolution: 200dpi) {
+    @container (width < 300px) {
+      --gap: 0px;
+    }
+  }
+}

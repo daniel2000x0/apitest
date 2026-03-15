@@ -1,0 +1,106 @@
+@import "../../../theme/theme.css";
+@import "../../../utils/utilities.css";
+
+.react-aria-Popover {
+
+  --background-color: var(--overlay-background);
+
+  box-sizing: border-box;
+
+  background: var(--background-color);
+  color: var(--text-color);
+
+  border: 1px solid var(--overlay-border);
+  border-radius: var(--radius-lg);
+
+  padding: var(--spacing-3);
+
+  font: var(--font-size) system-ui;
+
+  /* sombra moderna */
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.35),
+    0 2px 6px rgba(0,0,0,0.25);
+
+  /* animación */
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+
+  transform-origin: top center;
+}
+
+/* menús no necesitan padding */
+
+.react-aria-Popover[data-trigger=MenuTrigger],
+.react-aria-Popover[data-trigger=SubmenuTrigger] {
+  padding: 0;
+}
+
+/* flecha */
+
+.react-aria-Popover .react-aria-OverlayArrow svg {
+  display: block;
+  fill: var(--background-color);
+  stroke: var(--overlay-border);
+  paint-order: stroke;
+  stroke-width: 2px;
+}
+
+/* animación entrada */
+
+.react-aria-Popover[data-entering],
+.react-aria-Popover[data-exiting] {
+  transform: var(--origin);
+  opacity: 0;
+}
+
+/* posiciones */
+
+.react-aria-Popover[data-placement=top] {
+  --origin: translateY(6px);
+}
+
+.react-aria-Popover[data-placement=bottom] {
+  --origin: translateY(-6px);
+}
+
+.react-aria-Popover[data-placement=right] {
+  --origin: translateX(-6px);
+}
+
+.react-aria-Popover[data-placement=left] {
+  --origin: translateX(6px);
+}
+
+/* rotación flecha */
+
+.react-aria-Popover[data-placement=bottom] .react-aria-OverlayArrow svg {
+  transform: rotate(180deg);
+}
+
+.react-aria-Popover[data-placement=right] .react-aria-OverlayArrow svg {
+  transform: rotate(90deg);
+}
+
+.react-aria-Popover[data-placement=left] .react-aria-OverlayArrow svg {
+  transform: rotate(-90deg);
+}
+
+/* spacing cuando hay arrow */
+
+.react-aria-Popover[data-placement=top]:has(.react-aria-OverlayArrow) {
+  margin-bottom: 6px;
+}
+
+.react-aria-Popover[data-placement=bottom]:has(.react-aria-OverlayArrow) {
+  margin-top: 6px;
+}
+
+.react-aria-Popover[data-placement=right]:has(.react-aria-OverlayArrow) {
+  margin-left: 6px;
+}
+
+.react-aria-Popover[data-placement=left]:has(.react-aria-OverlayArrow) {
+  margin-right: 6px;
+}

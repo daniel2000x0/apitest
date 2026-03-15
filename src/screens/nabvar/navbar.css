@@ -1,0 +1,48 @@
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:12px 24px;
+
+  background:#0f172a;
+  color:white;
+
+  border-bottom:1px solid #1e293b;
+}
+
+/* logo */
+.navbar-logo{
+  font-size:20px;
+  font-weight:600;
+}
+
+/* menu */
+.navbar-menu{
+  display:flex;
+  gap:20px;
+  list-style:none;
+}
+
+.navbar-menu li{
+  cursor:pointer;
+  opacity:.8;
+}
+
+.navbar-menu li:hover{
+  opacity:1;
+}
+
+/* botón */
+.logout-btn{
+  background:#6366f1;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  color:white;
+  cursor:pointer;
+}
+
+.logout-btn:hover{
+  background:#4f46e5;
+}

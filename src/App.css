@@ -1,0 +1,32 @@
+
+
+/* Inputs */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+  margin-top: 6px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+/* Grid simple */
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

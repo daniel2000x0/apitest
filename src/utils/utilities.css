@@ -1,0 +1,139 @@
+@layer utilities {
+
+/* BUTTON BASE */
+
+.button-base {
+
+  --button-color: var(--primary);
+
+  --button-background: var(--primary);
+  --button-border: var(--border);
+
+  --button-text: white;
+
+  background: var(--button-background);
+  color: var(--button-text);
+
+  border: 1px solid var(--button-border);
+
+  border-radius: var(--radius);
+
+  padding: 8px 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.button-base:hover {
+
+  filter: brightness(1.1);
+}
+
+.button-base[data-pressed] {
+
+  transform: scale(0.96);
+}
+
+.button-base[data-focus-visible] {
+
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.button-base[data-variant="secondary"] {
+
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.button-base[data-variant="quiet"] {
+
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+}
+
+.button-base[data-disabled] {
+
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* INDICATOR */
+
+.indicator {
+
+  width: 16px;
+  height: 16px;
+
+  border-radius: 4px;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--border);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s ease;
+}
+
+[data-selected] > .indicator {
+
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.indicator[data-focus-visible] {
+
+  outline: 2px solid var(--primary);
+}
+
+.indicator[data-disabled] {
+
+  opacity: 0.4;
+}
+
+/* INSET (inputs, calendar container, etc) */
+
+.inset {
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  padding: 8px;
+
+  transition: border 0.2s ease;
+}
+
+.inset[data-hovered] {
+
+  border-color: var(--primary);
+}
+
+.inset[data-invalid] {
+
+  border-color: #ef4444;
+}
+
+.inset[data-disabled] {
+
+  opacity: 0.5;
+}
+
+/* track (sliders, progress bars) */
+
+.inset.track {
+
+  height: 6px;
+
+  padding: 0;
+
+  background: var(--border);
+}
+}

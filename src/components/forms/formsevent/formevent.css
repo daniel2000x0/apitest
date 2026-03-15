@@ -1,0 +1,131 @@
+/* =========================
+   CONTENEDOR FORMULARIO
+========================= */
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* contenedor fechas */
+.date-range {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* bloque individual fecha */
+.date-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+
+/* texto informativo */
+.date-info {
+  font-size: 13px;
+  opacity: 0.8;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* boton contenedor */
+.form-actions {
+  display: flex;
+   justify-content: center; /* centra horizontal */
+  align-items: center;  
+
+  margin-top: 10px;
+}
+
+
+/* =========================
+   LABEL
+========================= */
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+
+/* =========================
+   REACT DATEPICKER
+========================= */
+
+/* contenedor principal */
+.react-datepicker {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  max-width: 300px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  color: var(--text-color);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* calendario */
+.react-datepicker__month-container {
+  padding-right: 10px;
+}
+
+/* contenedor de tiempo */
+.react-datepicker__time-container {
+  width: 120px;
+  border-left: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+/* lista de horas */
+.react-datepicker__time-list {
+  height: 220px !important;
+  overflow-y: auto;
+}
+
+/* items de hora */
+.react-datepicker__time-list-item {
+  color: var(--text-color);
+  border-radius: 6px;
+}
+
+.react-datepicker__time-list-item:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* dias */
+.react-datepicker__day {
+  border-radius: 6px;
+}
+
+.react-datepicker__day:hover {
+  background: var(--primary);
+  color: white;
+}
+
+/* seleccionado */
+.react-datepicker__day--selected {
+  background: var(--primary);
+  color: white;
+}
+
+.react-datepicker-wrapper {
+  width: auto;
+}
+
+.react-datepicker__input-container input {
+  width: 240px;
+  max-width: 100%;
+}
