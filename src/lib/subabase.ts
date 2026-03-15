@@ -2,8 +2,8 @@ import { createBrowserClient } from '@supabase/ssr'
 
 
 export class Config{
-static projectUrl: string =  import.meta.env.VITE_PROJECTURL;
-static publishableKey =   import.meta.env.VITE_PUBLISHABLEKEY ;
+static projectUrl: string =  import.meta.env.VITEPROJECTURL;
+static publishableKey =   import.meta.env.VITEPUBLISHABLEKEY ;
 }
 
 
