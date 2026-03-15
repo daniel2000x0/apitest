@@ -1,9 +1,9 @@
 import { supabase } from "../../lib/subabase";
-import { useSession } from "../../providers/sessionProviders";
+//import { useSession } from "../../providers/sessionProviders";
 import "./navbar.css";
 
 const Navbar = () => {
-        const {user}= useSession()
+     ///   const {user}= useSession()
     const handlelagout = async () =>{
         await supabase.auth.signOut()
     }

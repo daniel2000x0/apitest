@@ -6,9 +6,9 @@ import EventInput from "../eventsCustom/InputEvent";
 import {useDateFormatter} from 'react-aria';
 import "./formevent.css"
 import { DatePicker } from "../datePicker/DatePicker";
-import { getLocalTimeZone, parseZonedDateTime, ZonedDateTime, type CalendarDate } from "@internationalized/date";
+import { getLocalTimeZone, parseZonedDateTime, ZonedDateTime } from "@internationalized/date";
 import { createCalendarEvent } from "../../../services/googleCalendar";
-import { useSession } from "../../../providers/sessionProviders";
+//import { useSession } from "../../../providers/sessionProviders";
 
 
 const now = new Date();

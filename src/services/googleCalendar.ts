@@ -9,7 +9,7 @@ export interface eventProps{
   end: CalendarDate
 }
 
-
+/*
 async function getallevent(){
   const googleToken = await getGoogleToken();
 
@@ -26,7 +26,7 @@ async function getallevent(){
   console.log(events);
 
   return events
-}
+}*/
 
 
 

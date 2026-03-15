@@ -1,5 +1,4 @@
 import { Controller, type Control, type FieldError } from "react-hook-form";
-import type { FormValues } from "../formsCustom/CustomForms";
 
 import './inputevent.css';
 import type { EventValues } from "../formsevent/formsevent";

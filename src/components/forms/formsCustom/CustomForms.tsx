@@ -7,7 +7,7 @@ import InputForm from '../formsInput/CustomInput';
  const schema = z.object({email: z.string().min(5,"Email debe poseer   al menos  5   caracteres"),
     password:z.string().min(8,"Al menos  5 caracterens ")
  })
-
+/*
  const shemasignin = z.object({
     emal: z.string().min(5,"Email debe poseer   al menos  5   caracteres"),
     password:z.string().min(8,"Al menos  5 caracterens "),
@@ -15,7 +15,7 @@ import InputForm from '../formsInput/CustomInput';
  }).refine(data=> data.password === data.consfirmpassword,{
     message:"las password es  correcta",
     path:['confirmPassword']
- })
+ })*/
    export type FormValues = z.infer<typeof schema>;
     const CustomForm = ()=>{
         const {control,handleSubmit , formState:{errors}}= useForm<FormValues>({
