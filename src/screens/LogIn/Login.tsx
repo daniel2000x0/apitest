@@ -2,11 +2,26 @@
 import CustomForm from "../../components/forms/formsCustom/CustomForms"
 import './Login.css'
 import { googleSignIn } from "../../services/googleAuth"
+import { Navigate, useNavigate } from "react-router-dom";
+import { useSession } from "../../providers/sessionProviders";
 const Login : React.FC =()=>{
-   /* const hanglefuntion = async ()=>{
-       supabase.auth.signInWithOtp({email})
-       
-    }*/
+ 
+  const navigate = useNavigate();
+  const { session } = useSession();
+
+  // si ya hay sesión → redirige al dashboard
+  if (session) {
+    return <Navigate to="/dashboard" />;
+  }
+
+  async function handleGoogleLogin() {
+    try {
+      await googleSignIn();
+      navigate("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
+  }
    
     return(
   <div className="login-page">
@@ -49,7 +64,13 @@ const Login : React.FC =()=>{
 
         <div className="login-footer">
        <div className="google-login">
-  <button className="google-btn" onClick={ ()=>{googleSignIn()}}>
+<button
+  className="google-btn"
+  onClick={() => {
+    console.log("Login clicked");
+    handleGoogleLogin();
+  }}
+>
     
     <svg width="20" height="20" viewBox="0 0 48 48">
       <path fill="#EA4335" d="M24 9.5c3.3 0 6.3 1.1 8.7 3.3l6.5-6.5C35.2 2.4 30 0 24 0 14.7 0 6.7 5.3 2.7 13l7.7 6C12.2 13.2 17.6 9.5 24 9.5z"/>
