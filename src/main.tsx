@@ -7,9 +7,11 @@ import { SessionProvider } from './providers/sessionProviders.tsx'
 
 
 createRoot(document.getElementById('root')!).render(
-<SessionProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </SessionProvider>
+  <StrictMode>
+    <SessionProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </SessionProvider>
+  </StrictMode>
 )
