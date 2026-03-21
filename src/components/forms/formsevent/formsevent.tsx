@@ -12,8 +12,6 @@ import { createCalendarEvent } from "../../../services/googleCalendar";
 
 
 const now = new Date();
-
-
 const zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 const startISO = now.toISOString().slice(0,19);
@@ -56,7 +54,7 @@ export const zodschema = z
 
 const [start, setStart] = useState<ZonedDateTime | null>(startDefault);
 const [end, setEnd] = useState<ZonedDateTime | null>(endDefault);
-    const {control, handleSubmit ,formState:{errors} } =  useForm<EventValues>({
+    const {control, handleSubmit  , reset,formState:{errors} } =  useForm<EventValues>({
         resolver:zodResolver(zodschema),
            mode: "onBlur",
             defaultValues:{
@@ -67,6 +65,8 @@ const [end, setEnd] = useState<ZonedDateTime | null>(endDefault);
             }
 
     });
+
+
     const  submithandler:SubmitHandler  <EventValues>=(data) =>{
       const evento =  {
     eventName: data.eventname,
@@ -76,6 +76,14 @@ const [end, setEnd] = useState<ZonedDateTime | null>(endDefault);
       }
       createCalendarEvent(evento);
    console.log(data)
+   reset({
+  eventname: "",
+  eventdescription: "",
+  start: startDefault,
+  end: endDefault
+});
+  
+   
     }
 let formatter = useDateFormatter({ dateStyle: 'full' });
 
@@ -91,6 +99,9 @@ const formatLocalDate = (date: any) => {
   if (!date) return "";
   return formatter.format(date.toDate(getLocalTimeZone()));
 };
+
+
+
     return(
 <form onSubmit={handleSubmit(submithandler)}>
 

@@ -6,7 +6,11 @@ export async function googleSignIn() {
    const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        scopes: 'https://www.googleapis.com/auth/calendar'
+        scopes: 'https://www.googleapis.com/auth/calendar',
+        queryParams: {
+        access_type: "offline",
+        prompt: "consent" // 🔥 CLAVE
+      }
       }
     });
     if(error) {

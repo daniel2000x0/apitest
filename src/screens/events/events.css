@@ -1,0 +1,62 @@
+.container-tabla {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #181818;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Título */
+.container-tabla h1 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1e1e1e;
+  color: #e4e4e4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Encabezado */
+.tabla thead {
+  background-color: #2c2c2c;
+}
+
+.tabla th {
+  padding: 12px;
+  text-align: left;
+  color: #ffffff;
+  border-bottom: 1px solid #444;
+}
+
+/* Celdas */
+.tabla td {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+/* Filas alternadas */
+.tabla tbody tr:nth-child(even) {
+  background-color: #252525;
+}
+
+/* Hover (resalta bien) */
+.tabla tbody tr:hover {
+  background-color: #333;
+  transition: 0.2s;
+}
+
+/* Texto secundario */
+.tabla td span {
+  color: #aaa;
+}
+.table button {
+  background-color: blue;
+}

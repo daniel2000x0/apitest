@@ -9,24 +9,45 @@ export interface eventProps{
   end: CalendarDate
 }
 
-/*
-async function getallevent(){
+
+export async function getallevent(){
+  const now = new Date().toISOString();
   const googleToken = await getGoogleToken();
-
-  const evento = await fetch(`https://www.googleapis.com/calendar/v3/calendars/primary/events`,{
-    method:"GET",
-    headers:{
-           Authorization: "Bearer " + googleToken
+ const url  = new URL("https://www.googleapis.com/calendar/v3/calendars/primary/events");
+ url.searchParams.set("timeMin",now)
+  url.searchParams.set("singleEvents","true")
+   url.searchParams.set("orderBy","startTime")
+ const response = await fetch(
+url.toString(),
+  {
+    headers: {
+      Authorization: `Bearer ${googleToken}`
     }
-
-  });
-    const events = await evento.json();
-
-    
+  }
+);
+if(!response.ok){
+   const error = await response.json();
+    console.error("Google API error:", error);
+    throw new Error("Error obteniendo eventos");
+}
+    const events = await response.json();
+const data = events.items
+    .filter((event: any) =>
+      event.eventType !== "birthday" &&
+      event.source?.title !== "Contacts"
+    )
+    .map((event: any) => ({
+      id: event.id,
+      title: event.summary,
+      description: event.description || "",
+      start: event.start?.dateTime || event.start?.date,
+      end: event.end?.dateTime || event.end?.date,
+      link: event.htmlLink
+    }));
   console.log(events);
 
-  return events
-}*/
+  return data
+}
 
 
 
@@ -84,4 +105,33 @@ export async function createCalendarEvent({
   const googleToken = data.session?.provider_token;
 
   return googleToken;
+}
+
+export async  function deleteCalendar (eventId : string){
+    const token = await getGoogleToken();
+    if(!token){
+      throw new Error("no hay token");
+      
+    }
+ 
+  const response = await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/primary/events/${eventId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+  if (!response.ok) {
+  if (response.status === 410) {
+    console.warn("El evento ya no existe (ya fue eliminado)");
+
+    return; 
+  }
+
+  const error = await response.json();
+  console.error("Google API error:", error);
+  throw new Error("Error eliminando evento");
+}
 }
