@@ -20,6 +20,10 @@ const Navbar = () => {
      const  home = ()=>{
      navigate("/dashboard")
     } 
+
+    const calendar = ()=>{
+       navigate("/calendar")
+    }
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -29,7 +33,7 @@ const Navbar = () => {
       <ul className="navbar-menu">
         <li onClick={home}>Inicio</li>
         <li  onClick={event}>Eventos</li>
-        <li>Calendario</li>
+        <li onClick={calendar}>Calendario</li>
         
       </ul>
 

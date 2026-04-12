@@ -1,0 +1,273 @@
+/* =========================================================
+   🔹 CONTENEDOR PRINCIPAL
+   👉 Define el layout general del calendario (centrado, oscuro)
+========================================================= */
+.container-calendar {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+
+  background-color: #181818;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================================================
+   🔹 TÍTULO
+   👉 Estilo del encabezado
+========================================================= */
+.container-calendar h1 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   🔹 WRAPPER DEL CALENDARIO
+   👉 Controla tamaño y borde
+========================================================= */
+.calendar-wrapper {
+  height: 650px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* =========================================================
+   🔹 CALENDARIO BASE
+   👉 Tema oscuro global para React Big Calendar
+========================================================= */
+.rbc-calendar {
+  height: 100%;
+  background-color: #1e1e1e;
+  color: #e4e4e4;
+  font-family: 'Segoe UI', sans-serif;
+
+  position: relative;
+  z-index: 1; /* 🔥 evita conflicto con modal */
+}
+
+/* =========================================================
+   🔹 TOOLBAR (botones arriba)
+   👉 Navegación del calendario
+========================================================= */
+.rbc-toolbar {
+  background-color: #2c2c2c;
+  border-bottom: 1px solid #444;
+  padding: 10px;
+}
+
+.rbc-toolbar button {
+  background: #3a3a3a;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.rbc-toolbar button:hover {
+  background: #505050;
+}
+
+.rbc-toolbar button.rbc-active {
+  background-color: #4f46e5;
+}
+
+/* =========================================================
+   🔹 GRID GENERAL
+   👉 Bordes del calendario
+========================================================= */
+.rbc-month-view,
+.rbc-time-view {
+  border: 1px solid #444;
+}
+
+/* =========================================================
+   🔹 DÍAS
+   👉 Fondo de cada celda
+========================================================= */
+.rbc-day-bg {
+  background-color: #1e1e1e;
+}
+
+.rbc-day-bg:hover {
+  background-color: #2c2c2c;
+}
+
+/* 👉 días fuera del mes */
+.rbc-off-range-bg {
+  background-color: #252525;
+}
+
+/* 👉 día actual */
+.rbc-today {
+  background-color: #2d2d2d;
+}
+
+/* =========================================================
+   🔹 FILAS DEL MES
+   👉 Altura consistente
+========================================================= */
+.rbc-month-row {
+  flex: 1 0 120px;
+  border-color: #333;
+}
+
+/* =========================================================
+   🔹 FECHAS (números)
+========================================================= */
+.rbc-date-cell {
+  font-size: 14px;
+  padding: 6px;
+  color: #ccc;
+}
+
+/* =========================================================
+   🔹 EVENTOS (MEJORA PRINCIPAL)
+   👉 Visual moderno + mejor legibilidad
+========================================================= */
+.rbc-event {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+
+  border-radius: 8px;
+  padding: 6px 8px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+/* 👉 texto interno (evita desbordes) */
+.rbc-event-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 👉 etiqueta de hora */
+.rbc-event-label {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* 👉 separación entre eventos */
+.rbc-day-slot .rbc-event {
+  margin-bottom: 4px;
+}
+
+/* 👉 mejora en vista week/day */
+.rbc-time-view .rbc-event {
+  border-left: 4px solid #a5b4fc;
+  padding-left: 6px;
+}
+
+/* 👉 contenedor interno */
+.rbc-day-slot .rbc-events-container {
+  padding: 2px;
+}
+
+/* 👉 interacción */
+.rbc-event:hover {
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  transform: scale(1.02);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+/* 👉 evento seleccionado */
+.rbc-event:focus,
+.rbc-event.rbc-selected {
+  outline: 2px solid #a5b4fc;
+}
+
+/* =========================================================
+   🔹 LÍNEA DE HORA ACTUAL
+========================================================= */
+.rbc-current-time-indicator {
+  background-color: #ef4444;
+}
+
+/* =========================================================
+   🔹 MODAL OVERLAY
+   👉 Capa superior (NO afectada por calendario)
+========================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999; /* 🔥 siempre encima */
+  backdrop-filter: blur(4px);
+}
+
+/* =========================================================
+   🔹 CONTENIDO DEL MODAL
+========================================================= */
+.modal-content {
+  background: #1e1e1e;
+  color: #e4e4e4;
+
+  padding: 24px;
+  border-radius: 12px;
+
+  width: 420px;
+  max-width: 90%;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  border: 1px solid #333;
+
+  position: relative;
+
+  animation: fadeInScale 0.2s ease;
+}
+
+/* 👉 animación */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   🔹 BOTÓN CERRAR
+========================================================= */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: #2c2c2c;
+  border: none;
+  color: #fff;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: #ef4444;
+}

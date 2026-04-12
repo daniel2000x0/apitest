@@ -1,15 +1,23 @@
 import { CalendarDate, getLocalTimeZone } from "@internationalized/date";
 import { supabase } from "../lib/subabase";
+import toJSDate from "../utils/dates";
 
 
-export interface eventProps{
-    eventName:String;
-    eventDescription: String;
-  start: CalendarDate
-  end: CalendarDate
+export interface eventCalendar{
+  summary: string;
+  description: string;
+  start: { dateTime: string };
+  end: { dateTime: string };
+
 }
 
 
+export interface eventProps {
+  eventName: string;
+  eventDescription: string;
+  start: Date;
+  end: Date;
+}
 export async function getallevent(){
   const now = new Date().toISOString();
   const googleToken = await getGoogleToken();
@@ -57,22 +65,31 @@ export async function createCalendarEvent({
   end,
   start
 }: eventProps) {
-  const startDate = start.toDate(getLocalTimeZone());
-  const endDate = end.toDate(getLocalTimeZone());
+  
   const googleToken = await getGoogleToken();
   console.log(googleToken)
+  if (!start) {
+  alert("Selecciona una fecha");
+  return;
+}
+const startDate =toJSDate(start)
+const endDate =toJSDate(end)
+console.log("start:", start);
+console.log("end:", end);
 
+console.log("startDate:", new Date(start));
+console.log("endDate:", new Date(end));
   const evento = {
     summary: eventName,
     description: eventDescription,
-    start: {
-      dateTime: startDate.toISOString(),
-      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-    },
-    end: {
-      dateTime: endDate.toISOString(),
-      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
-    }
+     start: {
+        dateTime: startDate.toISOString(), // ✅ ya es Date
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      },
+      end: {
+        dateTime: endDate.toISOString(),
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      },
   };
 
   const response = await fetch(

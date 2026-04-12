@@ -3,13 +3,13 @@ import { deleteCalendar, getallevent } from "../../services/googleCalendar"
 
 import Navbar from "../nabvar/Nabvar"
 import "./events.css"
-type EventType = {
-  id: string;
+export type EventType = {
+id: string;
   title: string;
-  description: string;
-  start: string;
-  end: string;
-  link: string;
+  description?: string;
+  start: Date;
+  end: Date;
+  link?: string;
 };
 const  Events = ()=>{
     const [events, setEvents] =useState<EventType[]>([])
